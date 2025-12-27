@@ -1,0 +1,48 @@
+.recruitment-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 1rem;
+}
+
+.recruitment-title {
+  text-align: center;
+  background: #1d3557;
+  color: #fff;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.recruitment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recruitment-table th,
+.recruitment-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.recruitment-table th {
+  background-color: #f7f7f7;
+  color: #555;
+  font-weight: 500;
+}
+
+.recruitment-table tr:hover {
+  background-color: #f9fafb;
+}
+
+.star-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}

@@ -1,0 +1,53 @@
+.standings-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.standings-title {
+  text-align: center;
+  background: #1d3557;
+  color: #fff;
+  padding: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.standings-table th {
+  background-color: #f7f7f7;
+  font-weight: 500;
+  color: #555;
+}
+
+.standings-row:hover {
+  background-color: #f9fafb;
+}
+
+.cutoff-row {
+  border-bottom: 3px solid #e63946 !important; /* red line cutoff */
+}
+
+.cutoff-label {
+  text-align: center;
+  margin-top: 0.75rem;
+  color: #e63946;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

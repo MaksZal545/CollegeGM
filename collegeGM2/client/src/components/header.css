@@ -1,0 +1,42 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers content by default */
+  background-color: #2f2f2f;
+  color: white;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hamburger button */
+.hamburger {
+  position: absolute; /* stays left, but visually aligned */
+  left: 20px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Page title centered */
+.page-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Responsive tweaks (optional) */
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 18px;
+  }
+}

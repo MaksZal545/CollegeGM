@@ -1,0 +1,28 @@
+.welcome-header {
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2f2f2f;
+  color: white;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Page title — same as main header */
+.page-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Responsive tweak (matches main header) */
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 18px;
+  }
+}

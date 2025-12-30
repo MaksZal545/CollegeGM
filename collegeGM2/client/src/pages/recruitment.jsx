@@ -2,7 +2,7 @@ import React from "react";
 import "./recruitment.css";
 import { Star, StarHalf, StarOff } from "lucide-react";
 
-// Utility: render star ratings with halves
+// render star ratings with halves
 const renderStars = (rating) => {
   const fullStars = Math.floor(rating);
   const hasHalf = rating % 1 >= 0.5;
@@ -63,4 +63,5 @@ export default function RecruitmentPage() {
       </table>
     </div>
   );
+
 }

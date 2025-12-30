@@ -1,16 +1,17 @@
 body {
-  background-color: #2f2f2f; /* dark grey */
-  color: white;              /* white text */
+  background-color: #2f2f2f; 
+  color: white;              
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 a {
-  color: #00bcd4; /* link color (cyan) */
+  color: #00bcd4; 
   text-decoration: none;
 }
 
 a:hover {
-  color: #80deea; /* lighter cyan on hover */
+  color: #80deea; 
+
 }

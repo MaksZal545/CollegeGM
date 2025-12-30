@@ -1,4 +1,4 @@
-/* === ROSTER MANAGER CONTAINER === */
+
 .roster-manager {
   padding: 2rem;
   max-width: 900px;
@@ -17,7 +17,6 @@
   color: #ffffff;
 }
 
-/* === TABLE === */
 .roster-table {
   width: 100%;
   border-collapse: collapse;
@@ -47,7 +46,6 @@
   color: #f9fafb;
 }
 
-/* === ROW INTERACTIONS === */
 .roster-row {
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
@@ -63,7 +61,6 @@
   z-index: 5;
 }
 
-/* === RED DIVIDER LINE BETWEEN STARTERS & BENCH === */
 .roster-divider {
   height: 4px;
   background-color: #ef4444;
@@ -71,7 +68,6 @@
   margin: 1rem 0;
 }
 
-/* === TABLE WRAPPER === */
 .roster-table-container {
   margin-top: 1rem;
 }
@@ -84,7 +80,6 @@
   text-align: center;
 }
 
-/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .roster-table th,
   .roster-table td {
@@ -95,4 +90,5 @@
   .roster-title {
     font-size: 1.4rem;
   }
+
 }

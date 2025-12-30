@@ -20,9 +20,10 @@
   white-space: nowrap;
 }
 
-/* Responsive tweak (matches main header) */
+
 @media (max-width: 600px) {
   .page-title {
     font-size: 18px;
   }
+
 }

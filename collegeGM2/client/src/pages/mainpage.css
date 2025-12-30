@@ -13,7 +13,7 @@
   font-weight: 700;
 }
 
-/* === Summary Section === */
+
 .summary-section {
   display: flex;
   justify-content: center;
@@ -46,7 +46,7 @@
   color: #1d3557;
 }
 
-/* === Stat Leaders === */
+/* Stat Leaders */
 .leaders-section {
   margin-bottom: 2rem;
 }
@@ -90,7 +90,7 @@
   font-weight: 700;
 }
 
-/* === Most Improved Players === */
+/* Most Improved Players */
 .improved-section {
   margin-bottom: 2rem;
 }
@@ -155,4 +155,5 @@
   color: #4CAF50;
   font-weight: 600;
   font-size: 0.9rem;
+
 }

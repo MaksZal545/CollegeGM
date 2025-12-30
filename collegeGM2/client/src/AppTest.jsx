@@ -18,7 +18,7 @@ import Schedule from "./pages/schedule.jsx";
 import Standings from "./pages/standings.jsx";
 import Recruitment from "./pages/recruitment.jsx";
 
-// 🆕 New Pages
+
 import WelcomePage from "./pages/welcomepage.jsx";
 import LeagueSelectPage from "./pages/leagueselect.jsx";
 
@@ -40,7 +40,7 @@ function AppContent() {
 
   const currentPage = pageTitles[location.pathname] || "Page";
 
-  // Determine which header to use
+  // determine which header to use
   const isWelcomePage =
     location.pathname === "/welcome" || location.pathname === "/leagues";
 
@@ -89,3 +89,4 @@ export default function App() {
     </Router>
   );
 }
+

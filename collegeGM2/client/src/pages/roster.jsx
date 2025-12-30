@@ -16,7 +16,6 @@ import { CSS } from "@dnd-kit/utilities";
 import { getActiveLeagueDB } from "../data/db2"; // ✅ import your league db helper
 import "./roster.css";
 
-// === Sortable row component ===
 function SortableRow({ player, index, isDivider }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: player.id });
@@ -52,7 +51,6 @@ function SortableRow({ player, index, isDivider }) {
   );
 }
 
-// === Main roster manager component ===
 export default function RosterManager() {
   const [players, setPlayers] = useState([]);
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
@@ -88,7 +86,7 @@ export default function RosterManager() {
 
     const newPlayers = arrayMove(players, oldIndex, newIndex);
 
-    // Maintain top 5 as starters after reorder
+    
     const updated = newPlayers.map((p, i) => ({
       ...p,
       status: i < 5 ? "starter" : "bench",
@@ -129,4 +127,5 @@ export default function RosterManager() {
       </table>
     </div>
   );
+
 }

@@ -41,7 +41,7 @@
 }
 
 .cutoff-row {
-  border-bottom: 3px solid #e63946 !important; /* red line cutoff */
+  border-bottom: 3px solid #e63946 !important; 
 }
 
 .cutoff-label {
@@ -50,4 +50,5 @@
   color: #e63946;
   font-size: 0.9rem;
   font-weight: 600;
+
 }

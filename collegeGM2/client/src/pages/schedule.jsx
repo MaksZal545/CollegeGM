@@ -2,8 +2,7 @@ import React from "react";
 import "./schedule.css";
 
 export default function SchedulePage() {
-  // For now, generate a mock 18-game schedule
-  // In your full app, you’ll replace this with dynamic schedule data
+  // For now generate a mock 18-game schedule
   const teams = [
     "Lakers", "Warriors", "Bucks", "Celtics", "Heat",
     "Suns", "76ers", "Mavericks", "Nuggets", "Clippers"
@@ -11,7 +10,7 @@ export default function SchedulePage() {
 
   const schedule = [];
 
-  // Generate 18 games (each team plays twice against the user’s team)
+  // Generate 18 games
   for (let i = 0; i < 9; i++) {
     schedule.push({
       id: i * 2 + 1,
@@ -58,4 +57,5 @@ export default function SchedulePage() {
       </div>
     </div>
   );
+
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getLeagueDB } from "../data/db2";  // your per-league Dexie helper
+import { getLeagueDB } from "../data/db2";  
 import { metaDB } from "../data/metaDB";         // for meta info
 import { useNavigate } from "react-router-dom";
 
@@ -24,20 +24,20 @@ export default function MainPage() {
 
         const db = getLeagueDB(leagueId);
 
-        // ✅ Make sure the DB is open
+        
         await db.open();
 
-        // Load metadata from metaDB
+        
         const meta = await metaDB.leagues.get(Number(leagueId));
         setLeague(meta || { id: leagueId, name: "Unknown League" });
 
-        // Load user college
+        
         if (userCollegeId) {
           const collegeData = await db.colleges.get(Number(userCollegeId));
           setCollege(collegeData);
         }
 
-        // Load players from user college
+        
         if (userCollegeId) {
           const playerList = await db.players
             .where("collegeId")
@@ -115,4 +115,5 @@ export default function MainPage() {
       </div>
     </div>
   );
+
 }

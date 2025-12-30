@@ -50,7 +50,7 @@ export default function LeagueSelect() {
     navigate("/main"); // go to main game screen
   }
 
-  // Delete a league (optional helper)
+  // Delete a league 
   async function handleDeleteLeague(leagueId) {
     if (!window.confirm("Are you sure you want to delete this league?")) return;
     await metaDB.leagues.delete(leagueId);
@@ -117,4 +117,5 @@ export default function LeagueSelect() {
       )}
     </div>
   );
+
 }

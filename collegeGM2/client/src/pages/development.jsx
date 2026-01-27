@@ -71,6 +71,12 @@ export default function DevelopmentPage() {
         traits: p.traits ?? [],
       }));
 
+      setPlayers(formattedPlayers);
+    } catch (err) {
+      console.error("Failed to load development players:", err);
+    }
+  }
+
   const handleTrainingChange = (id, value) => {
     setPlayers((prev) =>
       prev.map((p) => (p.id === id ? { ...p, trainingFocus: value } : p))
@@ -139,3 +145,4 @@ export default function DevelopmentPage() {
   );
 
 }
+

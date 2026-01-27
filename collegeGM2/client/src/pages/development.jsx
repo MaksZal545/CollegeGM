@@ -81,6 +81,9 @@ export default function DevelopmentPage() {
     setPlayers((prev) =>
       prev.map((p) => (p.id === id ? { ...p, trainingFocus: value } : p))
     );
+
+    const db = getActiveLeagueDB();
+    await db.players.update(id, { trainingFocus: value });
   };
 
   return (
@@ -145,4 +148,5 @@ export default function DevelopmentPage() {
   );
 
 }
+
 

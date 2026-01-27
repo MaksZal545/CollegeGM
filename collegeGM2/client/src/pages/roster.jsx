@@ -13,7 +13,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { getActiveLeagueDB } from "../data/db2"; // ✅ import your league db helper
+import { getActiveLeagueDB } from "../data/db2"; // import league db helper
 import "./roster.css";
 
 function SortableRow({ player, index, isDivider }) {
@@ -85,7 +85,6 @@ export default function RosterManager() {
     const newIndex = players.findIndex((p) => p.id === over.id);
 
     const newPlayers = arrayMove(players, oldIndex, newIndex);
-
     
     const updated = newPlayers.map((p, i) => ({
       ...p,
@@ -129,3 +128,4 @@ export default function RosterManager() {
   );
 
 }
+

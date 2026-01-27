@@ -63,11 +63,12 @@ export default function RosterManager() {
     try {
       const db = getActiveLeagueDB();
       const userCollegeId = Number(localStorage.getItem("userCollegeId"));
-      const playerList = await db.players.where("collegeId").equals(userCollegeId).toArray();
+      const playerList = await db.players.where("collegeId").equals(userCollegeId).sortBy("rosterOrder");
 
       // Tag first 5 as starters, rest as bench
       const withStatus = playerList.map((p, i) => ({
         ...p,
+        rosterOrder: i,
         status: i < 5 ? "starter" : "bench",
       }));
 
@@ -92,6 +93,9 @@ export default function RosterManager() {
     }));
 
     setPlayers(updated);
+
+    const db = getActiveLeagueDB();
+    await db.players.bulkPut(updated);
   };
 
   return (
@@ -128,4 +132,5 @@ export default function RosterManager() {
   );
 
 }
+
 

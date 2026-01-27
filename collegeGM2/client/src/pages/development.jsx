@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./development.css";
+import { getActiveLeagueDB } from "/data/db2";
 import { Star, StarHalf, StarOff } from "lucide-react";
 
 const attributes = [
@@ -38,27 +39,37 @@ const renderStars = (rating) => {
 
 export default function DevelopmentPage() {
   // Placeholder roster of 10 players (empty data)
-  const [players, setPlayers] = useState(
-    Array.from({ length: 10 }, (_, i) => ({
-      id: i + 1,
-      position: "",
-      name: "",
-      currentRating: 0,
-      potential: 0,
-      attributes: {
-        "2PT Shooting": "",
-        "3PT Shooting": "",
-        Dribbling: "",
-        Passing: "",
-        Rebounding: "",
-        Stealing: "",
-        Blocking: "",
-        IQ: "",
-      },
-      trainingFocus: "",
-      traits: [],
-    }))
-  );
+  const [players, setPlayers] = useState([]);
+  useEffect{{ => {
+    loadPlayers();
+  }, []);
+
+  async function loadPlayers() {
+    try {
+      const db = getActiveLeagueDB();
+      const userCollegeId = Number(localStorage.getItem("userCollegeId"));
+
+      const rosterPlayers = await db.players.where("collegeId").equals(userCollegeId).toArray();
+
+      const formattedPlayers = rosterPlayers.map((p) => ({
+        id: p.id,
+        position: p.position,
+        name: p.name,
+        currentRating: p.currentRating ?? 0,
+        potential: p.potential ?? 0,
+        attributes: {
+          "2Pt Shooting": p.attributes?.["2Pt Shotting"] ?? "-",
+          "3Pt Shooting": p.attributes?.["3Pt Shotting"] ?? "-",
+          Dribbling: p.attributes?.Dribbling ?? "-",
+          Passing: p.attributes?.Passing ?? "-",
+          Rebounding: p.attributes?.Rebounding ?? "-",
+          Stealing: p.attributes?.Stealing ?? "-",
+          Blocking: p.attributes?.Blocking ?? "-",
+          IQ: p.attributes?.IQ ?? "-",
+        },
+        trainingFocus: p.trainingFocus ?? "",
+        traits: p.traits ?? [],
+      }));
 
   const handleTrainingChange = (id, value) => {
     setPlayers((prev) =>
@@ -126,4 +137,5 @@ export default function DevelopmentPage() {
       </div>
     </div>
   );
+
 }

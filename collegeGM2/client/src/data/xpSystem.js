@@ -7,15 +7,21 @@ const db = getActiveDB();
 export const XP_PER_LEVEL = 100;
 
 export function applyXP(attribute, amount) {
-  if (attribute.value >= attribute.potential) return false;
+  if (attribute.value >= attribute.potential) return 0;
 
   attribute.xp += amount;
+  let levelIsGained = 0;
 
-  if (attribute.xp >= XP_PER_LEVEL) {
+  while (attribute.xp >= XP_PER_LEVEL && attribute.value < attribute.potential) {
     attribute.xp -= XP_PER_LEVEL;
     attribute.value += 1;
-    return true; // leveled up
+    levelIsGained += 1;
   }
 
-  return false;
+  if (attribute.value >= attribute.potential) {
+    attribute.xp = 0;
+  }
+
+  return levelIsGained;
 }
+

@@ -2,11 +2,10 @@ import { createLeagueMeta } from "./metaDB";
 import { getLeagueDB } from "./db2";
 
 export async function createNewLeague(name) {
-  // Step 1: Create meta entry
+  
   const meta = await createLeagueMeta(name);
   const leagueId = meta.id;
 
-  // Step 2: Create actual league DB
   const db = getLeagueDB(leagueId);
 
   await db.meta.add({
@@ -15,18 +14,42 @@ export async function createNewLeague(name) {
     createdAt: new Date().toISOString(),
   });
 
-  // Step 3: Generate sample colleges
-  const colors = ["#ffbe0b", "#3a86ff", "#ff006e", "#8338ec", "#007f5f", "#00b4d8", "#d62828", "#fb5607", "#f5b342", "#0096c7"];
-  const colleges = Array.from({ length: 10 }).map((_, i) => ({
+  const collegeNames = [
+    "Redwood State",
+    "Ironclad University",
+    "Northshore Tech",
+    "Pioneer College",
+    "Summit Valley",
+    "Blue Ridge",
+    "Granite Coast",
+    "Highland Institute",
+    "Lakeside Academy",
+    "Canyon State",
+  ];
+
+  const colorSchemes = [
+    { primary: "#e63946", secondary: "#1d3557" },
+    { primary: "#457b9d", secondary: "#f1faee" },
+    { primary: "#2a9d8f", secondary: "#264653" },
+    { primary: "#f4a261", secondary: "#2f3e46" },
+    { primary: "#8338ec", secondary: "#ffbe0b" },
+    { primary: "#3a86ff", secondary: "#ff006e" },
+    { primary: "#007f5f", secondary: "#d8f3dc" },
+    { primary: "#d62828", secondary: "#fcbf49" },
+    { primary: "#6a040f", secondary: "#f48c06" },
+    { primary: "#0096c7", secondary: "#caf0f8" },
+  ];
+
+  const colleges = collegeNames.map((collegeName, i) => ({
     leagueId,
-    name: `College ${i + 1}`,
-    colour: colors[i],
+    name: collegeName,
+    colours: colorSchemes[i],
     record: { wins: 0, losses: 0 },
+    isUser: i === 0, // first college is user
   }));
 
   const collegeIds = await db.colleges.bulkAdd(colleges, { allKeys: true });
 
-  // Step 4: Generate players
   const positions = ["PG", "SG", "SF", "PF", "C"];
   const randomName = () => {
     const first = ["Jayden", "Malik", "Luca", "Tobias", "Eli", "Bryce", "Amari"];
@@ -55,4 +78,5 @@ export async function createNewLeague(name) {
   localStorage.setItem("userCollegeId", collegeIds[0]);
 
   return leagueId;
+
 }

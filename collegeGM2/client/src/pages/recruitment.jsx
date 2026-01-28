@@ -27,14 +27,28 @@ const renderStars = (rating) => {
 };
 
 export default function RecruitmentPage() {
-  // Placeholder 50 recruits — currently empty (to be filled later)
-  const recruits = Array.from({ length: 50 }, (_, i) => ({
-    id: i + 1,
-    name: "",
-    currentRating: 0,
-    potential: 0,
-    age: "",
-  }));
+  const recruits = useSate([]);
+  useEffect(() => {
+    loadRecruits();
+  }, []);
+
+  async function loadRecruits() {
+    try {
+      const db = getActiveLeagueDB();
+      const prospects = await db.prospects.toArray();
+      const formatted = prospects.map((p, index) -> ({
+        id: p.id ?? index + 1,
+        name: p.name,
+        currentRating: p.currentRating ?? 0,
+        potential: p.potential ?? 0,
+        age: p.age ?? "-",
+      }));
+
+      setRecruits(formatted);
+    } catch (err) {
+      console.error("Failed to load prospects", err);
+    }
+  }
 
   return (
     <div className="recruitment-container">
@@ -66,4 +80,5 @@ export default function RecruitmentPage() {
   );
 
 }
+
 

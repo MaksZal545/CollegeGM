@@ -5,6 +5,8 @@ export function getLeagueDB(leagueId) {
 
   const db = new Dexie(`League_${leagueId}`);
 
+// might have to change 6 -> 7
+  
   db.version(6).stores({
   meta: "name,season,createdAt",
   colleges: "++id,leagueId,name,colour",
@@ -23,3 +25,4 @@ export function getActiveLeagueDB() {
   if (!leagueId) throw new Error("No active league set");
   return getLeagueDB(leagueId);
 }
+

@@ -42,7 +42,6 @@ export default function RecruitmentPage() {
         name: p.name,
         currentRating: p.currentRating ?? 0,
         potential: p.potential ?? 0,
-        age: p.age ?? "-",
       }));
 
       setRecruits(formatted);
@@ -81,6 +80,7 @@ export default function RecruitmentPage() {
   );
 
 }
+
 
 
 

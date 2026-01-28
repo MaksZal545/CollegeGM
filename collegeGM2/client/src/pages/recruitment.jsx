@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getActiveLeagueDB } from "/data/db2";
 import "./recruitment.css";
 import { Star, StarHalf, StarOff } from "lucide-react";
 
@@ -65,3 +66,4 @@ export default function RecruitmentPage() {
   );
 
 }
+

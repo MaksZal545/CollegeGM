@@ -40,7 +40,7 @@ export default function RecruitmentPage() {
       const formatted = prospects.map((p, index) -> ({
         id: p.id ?? index + 1,
         name: p.name,
-        currentRating: p.currentRating ?? 0,
+        rating: p.rating ?? 0,
         potential: p.potential ?? 0,
       }));
 
@@ -80,6 +80,7 @@ export default function RecruitmentPage() {
   );
 
 }
+
 
 
 

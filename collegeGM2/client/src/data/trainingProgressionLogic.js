@@ -1,4 +1,4 @@
-import { applyXp } from "/data/seedGenerator";
+import { applyXp } from "/data/xpSystem";
 
 function trainPlayer(player, attribute) {
   const updated = structuredClone(player);

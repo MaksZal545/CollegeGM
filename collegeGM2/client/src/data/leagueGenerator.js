@@ -60,6 +60,16 @@ export async function createNewLeague(name) {
   const rand = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
+  const generateAttribute = () => {
+    const value = rand(1,10);
+    const potential = rand(value,10);
+    return {
+      value,
+      potential,
+      xp: 0,
+    };
+  };
+  
   //indent? 
 const players = [];
 
@@ -68,19 +78,19 @@ for (const collegeId of collegeIds) {
     const position = positions[i % positions.length];
 
     const attributes = {
-      twoPt: rand(60, 85),
-      threePt: rand(55, 80),
-      dribbling: rand(60, 90),
-      passing: rand(55, 85),
-      rebounding: rand(50, 90),
-      stealing: rand(50, 85),
-      blocking: rand(40, 90),
+      twoPt: generateAtrribute(),
+      threePt: generateAtrribute()),
+      dribbling: generateAtrribute(),
+      passing: generateAtrribute(),
+      rebounding: generateAtrribute(),
+      stealing: generateAtrribute(),
+      blocking: generateAtrribute(),
     };
 
     const overall =
-      Object.values(attributes).reduce((a, b) => a + b, 0) /
+      Object.values(attributes).reduce((sum, attr) => sum + attr.value, 0) /
       Object.values(attributes).length /
-      20; // convert 0–100 → 1–5
+      2; 
 
     players.push({
       leagueId,
@@ -88,9 +98,7 @@ for (const collegeId of collegeIds) {
       name: randomName(),
       position,
       year: Math.ceil(Math.random() * 4),
-
       attributes,
-
       overall: +overall.toFixed(1),
       isStarter: false,
     });
@@ -106,4 +114,5 @@ for (const collegeId of collegeIds) {
   return leagueId;
 
 }
+
 

@@ -57,19 +57,45 @@ export async function createNewLeague(name) {
     return `${first[Math.floor(Math.random() * first.length)]} ${last[Math.floor(Math.random() * last.length)]}`;
   };
 
-  const players = [];
-  for (const id of collegeIds) {
-    for (let j = 0; j < 9; j++) {
-      players.push({
-        leagueId,
-        collegeId: id,
-        name: randomName(),
-        position: positions[Math.floor(Math.random() * positions.length)],
-        overall: +(Math.random() * 4 + 1).toFixed(1),
-        year: Math.ceil(Math.random() * 4),
-      });
-    }
+  const rand = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+  //indent? 
+const players = [];
+
+for (const collegeId of collegeIds) {
+  for (let i = 0; i < 9; i++) {
+    const position = positions[i % positions.length];
+
+    const attributes = {
+      twoPt: rand(60, 85),
+      threePt: rand(55, 80),
+      dribbling: rand(60, 90),
+      passing: rand(55, 85),
+      rebounding: rand(50, 90),
+      stealing: rand(50, 85),
+      blocking: rand(40, 90),
+    };
+
+    const overall =
+      Object.values(attributes).reduce((a, b) => a + b, 0) /
+      Object.values(attributes).length /
+      20; // convert 0–100 → 1–5
+
+    players.push({
+      leagueId,
+      collegeId,
+      name: randomName(),
+      position,
+      year: Math.ceil(Math.random() * 4),
+
+      attributes,
+
+      overall: +overall.toFixed(1),
+      isStarter: false,
+    });
   }
+}
 
   await db.players.bulkAdd(players);
 
@@ -80,3 +106,4 @@ export async function createNewLeague(name) {
   return leagueId;
 
 }
+

@@ -26,6 +26,7 @@ const renderStars = (rating) => {
   );
 };
 
+// add yearly recruits later
 export default function RecruitmentPage() {
   const recruits = useSate([]);
   useEffect(() => {
@@ -80,5 +81,6 @@ export default function RecruitmentPage() {
   );
 
 }
+
 
 

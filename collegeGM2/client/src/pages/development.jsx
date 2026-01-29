@@ -11,7 +11,6 @@ const attributes = [
   "Rebounding",
   "Stealing",
   "Blocking",
-  "IQ",
 ];
 
 // Reusable star rendering function
@@ -148,5 +147,6 @@ export default function DevelopmentPage() {
   );
 
 }
+
 
 

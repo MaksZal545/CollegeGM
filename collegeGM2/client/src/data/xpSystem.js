@@ -25,3 +25,12 @@ export function applyXP(attribute, amount) {
   return levelIsGained;
 }
 
+export function applyXpBundle(player, xpMap) {
+  let totalLevels = 0;
+  for (const[attr, xp] of Object.entries(xpMap)) {
+    if (player.attributes[attr]){
+      totalLevels += applyXP(player.attributes[attr], xp);
+    }
+  }
+  return totalLevels;
+}

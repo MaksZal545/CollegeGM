@@ -77,14 +77,13 @@ export default function DevelopmentPage() {
         currentRating: p.currentRating ?? 0,
         potential: p.potential ?? 0,
         attributes: {
-          "2Pt Shooting": p.attributes?.["2Pt Shotting"] ?? "-",
-          "3Pt Shooting": p.attributes?.["3Pt Shotting"] ?? "-",
-          Dribbling: p.attributes?.Dribbling ?? "-",
-          Passing: p.attributes?.Passing ?? "-",
-          Rebounding: p.attributes?.Rebounding ?? "-",
-          Stealing: p.attributes?.Stealing ?? "-",
-          Blocking: p.attributes?.Blocking ?? "-",
-          IQ: p.attributes?.IQ ?? "-",
+          twoPt: { value, potential, xp },
+          threePt: { value, potential, xp },
+          dribbling: { value, potential, xp },
+          passing: { value, potential, xp },
+          rebounding: { value, potential, xp },
+          stealing: { value, potential, xp },
+          blocking: { value, potential, xp },
         },
         trainingFocus: p.trainingFocus ?? "",
         traits: p.traits ?? [],
@@ -97,12 +96,13 @@ export default function DevelopmentPage() {
   }
 
   const handleTrainingChange = (id, value) => {
-    setPlayers((prev) =>
-      prev.map((p) => (p.id === id ? { ...p, trainingFocus: value } : p))
-    );
-
     const db = getActiveLeagueDB();
-    await db.players.update(id, { trainingFocus: value });
+
+    setPlayers((prev) =>
+      prev.map((p) => (p.id === playerId ? { ...p, trainingFocus: focus } : p))
+    );
+    
+    await db.players.update(playerId, { trainingFocus: focus });
   };
 
   return (
@@ -167,6 +167,7 @@ export default function DevelopmentPage() {
   );
 
 }
+
 
 
 

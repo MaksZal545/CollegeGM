@@ -4,15 +4,34 @@ import { getActiveLeagueDB } from "/data/db2";
 import { Star, StarHalf, StarOff } from "lucide-react";
 import { applyXpBundle } from "/data/xpSystem";
 
-const attributes = [
-  "2PT Shooting",
-  "3PT Shooting",
-  "Dribbling",
-  "Passing",
-  "Rebounding",
-  "Stealing",
-  "Blocking",
-];
+const ATTRIBUTE_LABELS = {
+  twoPt: "2PT Shooting",
+  threePt: "3PT Shooting",
+  dribbling: "Dribbling",
+  passing: "Passing",
+  rebounding: "Rebounding",
+  stealing: "Stealing",
+  blocking: "Blocking",
+};
+
+const attributeKeys = Object.keys(ATTRIBUTE_LABELS);
+
+const TRAINING_XP_MAP = {
+  twoPt: { twoPt: 40 },
+  threePt: { threePt: 40 },
+  dribbling: { dribbling: 40 },
+  passing: { passing: 40 },
+  rebounding: { rebounding: 40 },
+  stealing: { stealing: 40 },
+  blocking: { blocking: 40 },
+
+  balanced: {
+    twoPt: 15,
+    threePt: 15,
+    dribbling: 15,
+    passing: 15,
+  },
+};
 
 // Reusable star rendering function
 const renderStars = (rating) => {
@@ -148,6 +167,7 @@ export default function DevelopmentPage() {
   );
 
 }
+
 
 
 

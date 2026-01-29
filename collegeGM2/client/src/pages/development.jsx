@@ -132,9 +132,9 @@ export default function DevelopmentPage() {
                 <td>{renderStars(player.currentRating)}</td>
                 <td>{renderStars(player.potential)}</td>
 
-                {attributes.map((attr) => (
-                  <td key={attr} className="attr-cell">
-                    {player.attributes[attr] || "-"}
+                {attributeKeys.map((key) => (
+                  <td key={key} className="attr-cell">
+                    {player.attributes[key]?.value ?? "-"}
                   </td>
                 ))}
 
@@ -147,10 +147,8 @@ export default function DevelopmentPage() {
                     }
                   >
                     <option value="">Select</option>
-                    {attributes.map((attr) => (
-                      <option key={attr} value={attr}>
-                        {attr}
-                      </option>
+                    {attributeKeys.map((attr) => (
+                      <th key={key}>{ATTRIBUTE_LABELS[key]}</th>
                     ))}
                   </select>
                 </td>
@@ -167,6 +165,7 @@ export default function DevelopmentPage() {
   );
 
 }
+
 
 
 

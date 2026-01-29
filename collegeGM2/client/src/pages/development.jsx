@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./development.css";
 import { getActiveLeagueDB } from "/data/db2";
 import { Star, StarHalf, StarOff } from "lucide-react";
+import { applyXpBundle } from "/data/xpSystem";
 
 const attributes = [
   "2PT Shooting",
@@ -39,7 +40,7 @@ const renderStars = (rating) => {
 export default function DevelopmentPage() {
   // Placeholder roster of 10 players (empty data)
   const [players, setPlayers] = useState([]);
-  useEffect{{ => {
+  useEffect(() => {
     loadPlayers();
   }, []);
 
@@ -147,6 +148,7 @@ export default function DevelopmentPage() {
   );
 
 }
+
 
 
 
